@@ -34,6 +34,6 @@ function [tableauGris, histogramme, histogrammeNormalise, cumul] = egaliserHisto
         cumul(1,i) = cumul(1,i-1) + histogrammeNormalise(1, i) ;
     end
     
-    afficherLogs(cumul);
-    bar(tableauGris, histogramme, 'red')
+//    afficherLogs(cumul);
+//    bar(tableauGris, histogramme, 'red')
 endfunction
