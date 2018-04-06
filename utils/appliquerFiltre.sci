@@ -1,5 +1,5 @@
 function image_traitee = appliquerFiltre(image, filtre, coef, nom)
-    disp("Application d''un filtre : "+ nom);
+    afficherLogs("Application d''un filtre : "+ nom);
     
     [N, M] = size(image)
     [NMasque, MMasque]= size(filtre)
@@ -46,5 +46,5 @@ function image_traitee = appliquerFiltre(image, filtre, coef, nom)
     end
     
     // On affiche la nouvelle matrice après l'application du filtre
-    disp (image_traitee)
+    afficherLogs(image_traitee)
 endfunction

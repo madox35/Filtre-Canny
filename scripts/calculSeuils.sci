@@ -1,15 +1,45 @@
-function [high, low] = calculSeuils(Es)
+function [Th,Tl] = calculSeuils(es, ratio, nbIndexHistogramme)
+    disp("Calcul des seuils ratio = "+ string(ratio));
     
-    disp("Calcul des seuils");
-    [N,M] = size(Es);
+    [N,M] = size(es);
+    ratio = ratio / 100;
+  
+    // On commence par arrondir les valeurs décimales
+    imgMatriceEntiere(i,j) = floor(es);
     
-    Es_floor = floor(Es);
-    mini = min(Es_floor);
-    maxi = max(Es_floor);
-    step = (maxi - mini)/3;
+    // On récupère le min et le max de la matrice
+    valMin = min(imgMatriceEntiere);
+    valMax = max(imgMatriceEntiere);
     
+    step = (valMax - valMin) / nbIndexHistogramme;
+
+    // Initialisations des tableaux des histogrammes
+    histogrammeIndex = zeros(1, nbIndexHistogramme + 1);
+    histogramme = zeros(1, nbIndexHistogramme + 1);
+
+    for i = 2 : size(histogrammeIndex,2)
+        histogrammeIndex(i) = ((step * i) - step);
+    end
+
+    for i = 1 : N
+        for j = 1 : M
+            val = imgMatriceEntiere(i,j);
+            index = floor((val - valMin) / step) + 1;
+            histogramme(index) = histogramme(index) + 1;
+        end
+    end
+
+    // On normalise l'histogramme
+    histogrammeNormalise = histogramme / sum(histogramme);
     
-    
-    high = 0;
-    low = high/2;
-endfunction 
+    // On fait la répartition de l'histogramme normalisé
+    repartition = cumsum(histogrammeNormalise);
+
+    i=1;
+    while repartition(i) < ratio
+        i=i+1;
+    end
+
+    Th = histogrammeIndex(i);
+    Tl = Th / 2;
+endfunction

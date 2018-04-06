@@ -1,6 +1,6 @@
 function image_traitee = supprimerNonMax(Es, Eo)
     
-    disp("Suppression des non-maximums");
+    afficherLogs("Suppression des non-maximums");
     [N,M] = size(Es);
     
     for x = 1 : N
@@ -9,7 +9,6 @@ function image_traitee = supprimerNonMax(Es, Eo)
             [x1, y1, x2, y2] = recupererPixelsVoisins(Eo(x,y),x,y);
             voisin1 = verifierSiPixelExiste(x1,y1, Es);
             voisin2 = verifierSiPixelExiste(x2,y2, Es);
-            
             
 //          Si la valeur du pixel courant est inférieure à l'un de ses deux voisins
 //          on affiche le pixel en noir
@@ -21,5 +20,5 @@ function image_traitee = supprimerNonMax(Es, Eo)
         end
     end
     
-    disp(image_traitee)
+    afficherLogs(image_traitee)
 endfunction

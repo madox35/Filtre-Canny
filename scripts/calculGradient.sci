@@ -10,14 +10,16 @@ function [Es, Eo] = calculGradient(image)
         for y = 1 : M
             Es(x,y) = sqrt(Jx(x,y)^2+Jy(x,y)^2)
             Eo(x,y) = approximer(atan(-Jx(x,y),Jy(x,y))*180/%pi)
-//          atan(x,y) = arctan(x/y) resultat en radian
+//          vérification
+//          disp(atan(-Jx(x,y),Jy(x,y))*180/%pi);
+//          atan(x,y) = arctan(x/y) resultat en radian puis convertit en degrés
             
         end
     end
     
-    disp("Norme du gradient");
-    disp(Es)
+    afficherLogs("Norme du gradient");
+    afficherLogs(Es)
     
-    disp("Angle de la normale du gradient")
-    disp(Eo)
+    afficherLogs("Angle de la normale du gradient")
+    afficherLogs(Eo)
 endfunction
