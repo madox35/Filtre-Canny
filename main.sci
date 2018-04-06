@@ -1,7 +1,7 @@
 funcprot(0);
 
 CHEMIN = 'C:\Users\Hugo Jové (sécurité)\Desktop\ENSSAT\Semestre 4 Ecole - 2017\Traitement_images\';
-IMAGE = 'test.png';
+IMAGE = 'contour.png';
 
 global AFFICHER_LOGS
 AFFICHER_LOGS = %t; // %T = vrai / %F = faux
@@ -24,7 +24,7 @@ function main()
     img_non_max = supprimerNonMax(Es, Eo);  
     
     stacksize(16000000);
-    img_hysteresis = seuillageHysteresis(img_non_max, Es, Eo)
+    img_hysteresis = seuillageHysteresis(img_non_max, Es, Eo, 70)
 
     toutes_img = [img img_gaussien; img_non_max img_hysteresis]
     afficherImage(toutes_img);

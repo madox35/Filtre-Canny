@@ -1,12 +1,13 @@
-function image_traitee = seuillageHysteresis(matrice, Es, Eo)
+function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
     
-    afficherLogs("Seuillage par hystéresis")
+    afficherLogs("Seuillage par hystéresis");
+    
     [N,M] = size(matrice);
     image_traitee = zeros(N,M);
     
-    [high, low] = calculSeuils(Es, 90, 100)
-//    high = 0.7*255;
-//    low = 0.35*255;
+    [tableauGris, histogramme, histogrammeNormalise, cumul] = egaliserHistogramme(Es);
+    [high, low] = calculSeuils(tableauGris, cumul, ratio);
+    
     afficherLogs(high);
     afficherLogs(low);
     
