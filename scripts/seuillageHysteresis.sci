@@ -19,13 +19,13 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
         for y = 1 : M
             if matrice(x,y) >= high then
                 temp(x,y) = 255;
-                image_traitee(x,y) = 255;
             elseif matrice(x,y) < low then
                 temp(x,y) = 0;
-                image_traitee(x,y) = 0;
             end
         end
     end
+    
+    image_traitee = temp;
     afficherLogs("Matrice partiellement traitée");   
     afficherLogs(temp)
 

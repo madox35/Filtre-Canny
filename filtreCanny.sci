@@ -7,7 +7,7 @@ IMAGE3 = 'test_20x20.png';
 IMAGE4 = 'murray.jpg';
 
 global AFFICHER_LOGS
-AFFICHER_LOGS = %f; // %T = vrai / %F = faux
+AFFICHER_LOGS = %t; // %T = vrai / %F = faux
 
 function filtreCanny(chemin, image, seuil)
     
@@ -38,4 +38,4 @@ function filtreCanny(chemin, image, seuil)
     afficherImage(toutes_img);
 endfunction
 
-filtreCanny(CHEMIN, IMAGE4, 80);
+filtreCanny(CHEMIN, IMAGE2, 70);

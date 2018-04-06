@@ -13,7 +13,6 @@ function [Es, Eo] = calculGradient(image)
 //          vérification
 //          disp(atan(-Jx(x,y),Jy(x,y))*180/%pi);
 //          atan(x,y) = arctan(x/y) resultat en radian puis convertit en degrés
-            
         end
     end
     
