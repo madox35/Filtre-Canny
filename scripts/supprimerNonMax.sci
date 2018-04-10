@@ -6,7 +6,8 @@ function image_traitee = supprimerNonMax(Es, Eo)
     for x = 1 : N
         for y = 1 : M
             
-            [x1, y1, x2, y2] = recupererPixelsVoisins(Eo(x,y),x,y);
+			direction_pix = approximer(Eo(x,y)+90);
+            [x1, y1, x2, y2] = recupererPixelsVoisins(direction_pix,x,y);
             voisin1 = verifierSiPixelExiste(x1,y1, Es);
             voisin2 = verifierSiPixelExiste(x2,y2, Es);
             

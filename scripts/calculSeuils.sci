@@ -9,6 +9,4 @@ function [high, low] = calculSeuils(tableauGris, cumul, ratio)
 
     high = i;
     low = high/2;
-    
-    disp(high)
 endfunction

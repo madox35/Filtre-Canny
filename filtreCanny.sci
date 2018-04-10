@@ -1,6 +1,6 @@
 funcprot(0);
 
-CHEMIN = 'C:\Users\Hugo Jové (sécurité)\Desktop\ENSSAT\Semestre 4 Ecole - 2017\Traitement_images\';
+CHEMIN = 'C:/Users/Mathias/Desktop/Filtre-Canny/';
 IMAGE1 = 'test_3x3.png';
 IMAGE2 = 'test_5x5.png';
 IMAGE3 = 'test_20x20.png';
@@ -31,11 +31,10 @@ function filtreCanny(chemin, image, seuil)
     [Es, Eo] = calculGradient(img_gaussien);
     img_non_max = supprimerNonMax(Es, Eo);  
     
-    stacksize(16000000);
     img_hysteresis = seuillageHysteresis(img_non_max, Es, Eo, seuil)
 
     toutes_img = [img img_gaussien; img_non_max img_hysteresis]
     afficherImage(toutes_img);
 endfunction
 
-filtreCanny(CHEMIN, IMAGE4, 90);
+filtreCanny(CHEMIN, IMAGE4, 80);

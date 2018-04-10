@@ -21,11 +21,10 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
                 temp(x,y) = 255;
             elseif matrice(x,y) < low then
                 temp(x,y) = 0;
-            end
+            end           
         end
     end
     
-    image_traitee = temp;
     afficherLogs("Matrice partiellement traitée");   
     afficherLogs(temp)
 
@@ -34,8 +33,8 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
     // Si c'est le cas, le pixel devient également un contour
     for x = 1: N
         for y = 1 : M
-            
-            if ((temp(x,y) ~= 0) & (temp(x,y) ~= 255)) then
+                
+            if(temp(x,y)<high & temp(x,y) >= low) then
                 
                 direction_pix = approximer(Eo(x,y)+90);
                 [x1, y1, x2, y2] = recupererPixelsVoisins(direction_pix, x, y);
@@ -43,14 +42,15 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
                 voisin2 = verifierSiPixelExiste(x2,y2, temp);
                 
                 if (voisin1 == 255) | (voisin2 == 255) then
-                    image_traitee(x,y) = 255;
+                    temp(x,y) = 255;
                 else
-                    image_traitee(x,y) = 0;
+                    temp(x,y) = 0;
                 end
             end
         end     
     end
     
+    image_traitee = temp;
     afficherLogs("Image finale");
     afficherLogs(image_traitee);
 endfunction
