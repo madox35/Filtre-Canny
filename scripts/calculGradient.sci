@@ -8,11 +8,9 @@ function [Es, Eo] = calculGradient(image)
     [N,M] = size(image)
     for x = 1 : N
         for y = 1 : M
-            Es(x,y) = sqrt(Jx(x,y)^2+Jy(x,y)^2)
-            Eo(x,y) = approximer(atan(-Jx(x,y),Jy(x,y))*180/%pi)
-//          vérification
-//          disp(atan(-Jx(x,y),Jy(x,y))*180/%pi);
-//          atan(x,y) = arctan(x/y) resultat en radian puis convertit en degrés
+            Es(x,y) = sqrt(Jx(x,y)^2+Jy(x,y)^2);
+            Eo(x,y) = approximer(atan(-Jx(x,y),Jy(x,y))*180/%pi);
+//          arctan(x/y) resultat en radian puis convertit en degrés
         end
     end
     

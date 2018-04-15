@@ -1,8 +1,5 @@
 function direction = approximer(angle)
-
-    if(angle > 180) then
-        angle = angle - 180;
-    end
+    
     // première condition différente car si l'angle = 176 par exemple,
     // on respectera bien >= 157.5 mais pas <= -157.5
     // se référer au schéma directions.png
