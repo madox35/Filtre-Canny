@@ -7,7 +7,7 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
     
     [tableauGris, histogramme, histogrammeNormalise, cumul] = egaliserHistogramme(Es);
     [high, low] = calculSeuils(tableauGris, cumul, ratio);
-    
+
     afficherLogs(high);
     afficherLogs(low);
     
@@ -34,7 +34,7 @@ function image_traitee = seuillageHysteresis(matrice, Es, Eo, ratio)
     for x = 1: N
         for y = 1 : M
                 
-            if(temp(x,y)<high & temp(x,y) >= low & temp(x,y)< high) then
+            if(temp(x,y) >= low & temp(x,y)< high) then
                 
                 direction_pix = approximer(Eo(x,y)-90);
                 [x1, y1, x2, y2] = recupererPixelsVoisins(direction_pix, x, y);
